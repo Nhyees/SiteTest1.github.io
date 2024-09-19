@@ -1,0 +1,22 @@
+body {
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  .navbar {
+    background-color: #007bff;
+  }
+  
+  .navbar .nav-link {
+    color: white;
+  }
+  
+  .card-img-top {
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
