@@ -1,22 +1,48 @@
+/* Style global */
 body {
-    background-color: #f0f0f0;
+    background-color: #1c1c1c; /* Fond sombre */
+    color: #f0f0f0; /* Texte clair */
     font-family: 'Arial', sans-serif;
   }
   
-  h1, h2 {
-    color: #333;
+  h1, h2, p {
+    color: #f0f0f0; /* Texte blanc ou clair */
   }
   
+  /* Navbar */
   .navbar {
-    background-color: #007bff;
+    background-color: #333; /* Fond sombre de la barre de navigation */
   }
   
   .navbar .nav-link {
-    color: white;
+    color: #f0f0f0; /* Couleur des liens dans la navbar */
+  }
+  
+  .navbar .nav-link:hover {
+    color: #007bff; /* Couleur au survol */
+  }
+  
+  /* Galerie de dessins */
+  .card {
+    background-color: #2b2b2b; /* Fond sombre pour les cartes */
+    border: none; /* Pas de bordures */
+  }
+  
+  .card-body {
+    color: #f0f0f0; /* Couleur du texte sur les cartes */
   }
   
   .card-img-top {
     max-height: 300px;
     object-fit: cover;
+  }
+  
+  /* Section Contact */
+  section {
+    padding: 40px 0;
+  }
+  
+  #contact a {
+    color: #007bff; /* Lien de contact en bleu */
   }
   
