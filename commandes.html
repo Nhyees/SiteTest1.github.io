@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commandes de dessins - Portfolio de Nhi</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    .pricing-card {
+      background-color: #2b2b2b;
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    .pricing-card .card-header {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+
+    .pricing-card .btn {
+      background-color: #007bff;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Portfolio de Nhi</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html#about">Mon portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="commandes.html">Commandes</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+  <div class="container">
+    <h1 class="text-center my-5">Commandes de dessins</h1>
+
+    <!-- Section Commandes -->
+    <section id="orders" class="container my-5">
+      <h2 class="text-center">Choisissez votre type de dessin</h2>
+      <div class="row">
+
+        <!-- Carte pour "Photo de Profil" -->
+        <div class="col-md-6">
+          <div class="card pricing-card">
+            <div class="card-header text-center">
+              <h3>Photo de Profil</h3>
+            </div>
+            <div class="card-body text-center">
+              <p class="card-text">Un dessin personnalisé pour votre photo de profil !</p>
+              <p class="card-text"><strong>Prix : 20 CHF</strong></p>
+              <button class="btn btn-primary" onclick="openOrderForm('photo de profil', 20)">Commander</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte pour "Dessin Manga" -->
+        <div class="col-md-6">
+          <div class="card pricing-card">
+            <div class="card-header text-center">
+              <h3>Dessin Manga</h3>
+            </div>
+            <div class="card-body text-center">
+              <p class="card-text">Obtenez votre personnage dans un style manga unique !</p>
+              <p class="card-text"><strong>Prix : 50 CHF</strong></p>
+              <button class="btn btn-primary" onclick="openOrderForm('dessin manga', 50)">Commander</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Formulaire de commande (caché par défaut) -->
+    <form id="orderForm" action="https://formspree.io/f/mrbzwlzp" method="POST" style="display:none;">
+        <div class="form-group">
+          <label for="drawingType">Type de dessin :</label>
+          <input type="text" id="drawingType" name="drawingType" class="form-control" placeholder="Ex: Dessin manga, portrait" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Prix :</label>
+          <input type="text" id="price" name="price" class="form-control" placeholder="Indiquez le prix" required>
+        </div>
+        <div class="form-group">
+          <label for="details">Détails de la commande :</label>
+          <textarea id="details" name="details" class="form-control" rows="4" placeholder="Décrivez ce que vous voulez" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="email">Votre email :</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Entrez votre email" required>
+        </div>
+        <input type="hidden" name="_next" value="confirmation.html">
+        <input type="hidden" name="_honeypot" value="">
+        <button type="submit" class="btn btn-primary">Envoyer la commande</button>
+    </form>
+
+  <script>
+    function openOrderForm(drawingType, price) {
+      document.getElementById('orderForm').style.display = 'block';
+      document.getElementById('drawingType').value = drawingType;
+      document.getElementById('price').value = price + ' CHF';
+      window.scrollTo(0, document.getElementById('orderForm').offsetTop);
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Empêche l'envoi immédiat
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          window.location.href = 'confirmation.html'; // Redirection vers la page de confirmation
+        } else {
+          alert('Une erreur est survenue. Veuillez réessayer.');
+        }
+      });
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
